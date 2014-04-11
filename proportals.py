@@ -1,7 +1,7 @@
 import urllib2
 import json
 
-portals = json.load(urllib2.urlopen('http://internal.hubapi.com/sfdc/v1/versions/v2?hapikey='))
+portals = json.load(urllib2.urlopen('internalapi'))
 
 def organization_type():
 	
@@ -9,7 +9,7 @@ def organization_type():
 
 	for portalid in portals:
 		try:
-			orgstats = 'http://internal.hubapi.com/sfdc/v1/objects/%d/Organization?hapikey=' % portalid
+			orgstats = 'internalapi' % portalid
 			f = json.load(urllib2.urlopen(orgstats))
 			z = [x for x in f]
 			for key in z:
