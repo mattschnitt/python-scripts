@@ -3,7 +3,7 @@ import json
 from numpy import mean
 import threading
 
-v2portals = 'http://internal.hubapi.com/sfdc/v1/versions/v2?hapikey=07dc043a-ca93-442c-9b3f-98837871f96d'
+v2portals = #portals
 
 response = urllib2.urlopen(v2portals)
 intermediary = json.load(response)
@@ -27,14 +27,14 @@ def print_individual(id):
 
 #print portal stats for individual portal
 def individual_stats(portalid):
-	portalstats = 'http://internal.hubapi.com/sfdc/v1/portals/%d?hapikey=07dc043a-ca93-442c-9b3f-98837871f96d' % portalid
+	portalstats = #stats % portalid
 	f = json.load(urllib2.urlopen(portalstats))
 	print f
 
 #grab only averageSyncTimeLastHourInSeconds if a portal has intermediary
 #note: after json is decoded, it just exists as a dictionary
 def inividual_sync_time(portalid):
-	portalstats = 'http://internal.hubapi.com/sfdc/v1/portals/%d?hapikey=07dc043a-ca93-442c-9b3f-98837871f96d' % portalid
+	portalstats = #stats % portalid
 	f = json.load(urllib2.urlopen(portalstats))
 	if 'averageSyncTimeLastHourInSeconds' in f:
 		print f['averageSyncTimeLastHourInSeconds']
@@ -45,7 +45,7 @@ def inividual_sync_time(portalid):
 def get_all_average_sync_times():
 	synctimes = []
 	for portalid in intermediary:
-		portalstats = 'http://internal.hubapi.com/sfdc/v1/portals/%d?hapikey=07dc043a-ca93-442c-9b3f-98837871f96d' % portalid
+		portalstats = #stats % portalid
 		f = json.load(urllib2.urlopen(portalstats))
 		if 'averageSyncTimeLastHourInSeconds' in f:
 			synctimes.append(f['averageSyncTimeLastHourInSeconds'])
